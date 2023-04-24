@@ -23,7 +23,7 @@ We trained our model on the following eight categories or "aesthetics":
 
 ### Links to Datasets
 Training and Validation Datasets
-- https://drive.google.com/drive/folders/1dXOS4b3BTFcPT4nB09OAGNIkh_zZKOTN?usp=share_link
+https://drive.google.com/drive/folders/1dXOS4b3BTFcPT4nB09OAGNIkh_zZKOTN?usp=share_link
 
 
 ## Project Structure
