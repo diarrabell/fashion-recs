@@ -21,7 +21,6 @@ if torch.cuda.is_available():
     torch.cuda.manual_seed(0)
 
 class ResNet:
-    ''' initialize resnet50 model '''
     def __init__(self, batch_size, dataset_sizes) -> None: 
       self.dataset_sizes = dataset_sizes
       self.batch_size = batch_size
@@ -42,8 +41,7 @@ class ResNet:
       self.lr_scheduler = optim.lr_scheduler.StepLR(self.optimizer, step_size=7, gamma=0.1)
       self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
-    ''' train model '''
-    def train_model(self, dataloaders, num_epochs): #train model
+    def train_model(self, dataloaders, num_epochs):
         # self.dataloaders = dataloaders
         model = self.model.to(self.device)
         since = time.time()
@@ -126,3 +124,6 @@ class ResNet:
             preds = np.squeeze(preds.cpu().numpy())
             images = images.cpu().numpy()
     
+    def savemodel(self):
+        filename = "model.pt"
+        torch.save(self.final_model, filename)

@@ -1,3 +1,8 @@
+"""
+This script contains classes to create training, validation, and test dataloaders. Returns dataloaders.
+"""
+
+
 import os
 import numpy as np
 import pandas as pd
@@ -7,14 +12,12 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader, TensorDataset
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.octim as optim
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
-import PIL.Image
 
 
-class Dataloader:
+class TrainDataloader:
     def __init__(self, dir, batch_size) -> None:
         self.dir = dir
         self.batch_size = batch_size
@@ -45,9 +48,7 @@ class Dataloader:
         self.class_names = self.train_dataset.classes
         print("Classes: {0}".format(self.class_names))
 
-        print('sizes: ', self.dataset_sizes['train'], self.dataset_sizes['val'])
-        print('imgs: ', self.train_loader.dataset.imgs)
-        print('here: ', self.train_loader)
+        print('Dataset sizes: ', self.dataset_sizes['train'], self.dataset_sizes['val'])
 
         #set random seeds for reproducibility
         torch.manual_seed(0)
@@ -69,6 +70,27 @@ class Dataloader:
             ax.imshow(image)
             ax.set_title("{}".format(self.class_names[labels[idx]]))
         plt.show()
+
+class TestDataloader:
+    def __init__(self, dir, batch_size) -> None:
+        self.dir = dir
+        self.batch_size = batch_size
+        test_transform = transforms.Compose([
+            transforms.Resize((256, 256)),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ])
+        #create dataset for test dataset
+        test_dataset = datasets.ImageFolder(self.dir, transform = test_transform)
+        #create dataloader for test dataset
+        self.test_dataloader = DataLoader(test_dataset, self.batch_size)
+        #get class names
+        self.class_names = test_dataset.classes
+
+        #set random seeds for reproducibility
+        torch.manual_seed(0)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed(0)
 
 
 
