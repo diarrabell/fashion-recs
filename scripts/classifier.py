@@ -14,12 +14,12 @@ import matplotlib.pyplot as plt
 
 
 class ClassifyData:
-    def __init__(self, model, dataloader, device, class_names) -> None:
-        self.model = model.to(self.device)
+    def __init__(self, model, dataloader, device, class_names) -> None:   
         self.dataloader = dataloader
         self.device = device
         self.class_names = class_names
-        self.test_preds = None
+        self.model = model.to(self.device)
+        
     
     def test_model(self):
         #turn autograd off
@@ -49,7 +49,7 @@ class ClassifyData:
         y_true = np.array(y_true)
         test_acc = np.sum(test_preds == y_true)/y_true.shape[0]
 
-        self.test_preds = test_preds
+        self.test_preds = list(test_preds)
     
     def visualize_results(self):
         with torch.no_grad():

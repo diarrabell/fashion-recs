@@ -85,8 +85,7 @@ class TestDataloader:
         #create dataloader for test dataset
         self.test_dataloader = DataLoader(test_dataset, self.batch_size)
         #get class names
-        self.class_names = test_dataset.classes
-
+        self.class_names = ["70s", "80s", "90s", "boho", "cottagecore", "goth", "kawaii", "y2k"]
         #set random seeds for reproducibility
         torch.manual_seed(0)
         if torch.cuda.is_available():
