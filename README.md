@@ -1,5 +1,5 @@
 # Fashion Recommendations
-Diarra Bell, Sakura Anning Yoshihara
+# Diarra Bell, Sakura Anning Yoshihara
 
 #### Category: Social Media and News
 #### Type: Natural Language Processing
