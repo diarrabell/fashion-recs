@@ -1,1 +1,1 @@
-# fashion-recs
+# Fashion Recommendations
