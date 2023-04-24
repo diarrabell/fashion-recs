@@ -2,7 +2,7 @@
 # Diarra Bell, Sakura Anning Yoshihara
 
 ### Description 
-<Insert Description>
+<insert description>
 
 
 ### Links to Datasets
@@ -41,3 +41,4 @@ pip install -r requirements.txt
 ```
 make run
 ```
+3. Upload at least 10 photos depicting the aesthetic of the desired products
