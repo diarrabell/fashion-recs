@@ -27,6 +27,7 @@ class Recommender():
             columns =['img_name', 'links', "aesthetics"])
         
     def get_recs(self):
+        ret = None
         vec = CountVectorizer()
         genres_vec = vec.fit_transform(self.catalog_df['aesthetics'])
 

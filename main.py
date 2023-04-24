@@ -43,6 +43,9 @@ def test_images():
         test_set.test_model()
         predictions = test_set.find_top_predictions()
 
+        for pred in predictions:
+            st.write(pred)
+
     #recommend 10 similar products from the top predicted classes
     with st.spinner("generating recommendations..."):
         time.sleep(5)
