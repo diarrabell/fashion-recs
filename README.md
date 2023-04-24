@@ -2,7 +2,17 @@
 # Diarra Bell, Sakura Anning Yoshihara
 
 ### Description 
-<insert description>
+#### Objective:
+Given a set of input images, classify the images into predetermined aesthetics and recommend products that fit that aesthetic.
+  
+We trained our model on the following eight categories or "aesthetics":
+- 70s
+- 80s
+- 90s
+- y2k
+- goth
+- cottagecore
+- kawaii
 
 
 ### Links to Datasets
