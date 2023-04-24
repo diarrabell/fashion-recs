@@ -45,7 +45,7 @@ https://drive.google.com/drive/folders/1dXOS4b3BTFcPT4nB09OAGNIkh_zZKOTN?usp=sha
 
 ## Link to App Demo
 ```
-
+https://diarrabell-fashion-recs-main-dzbzir.streamlit.app/
 ```
 ## Instructions to run Streamlit app. 
 ### Upload images to Streamlit to generate recommendations to Forever21 products 
