@@ -23,7 +23,7 @@ Training and Validation Datasets
 ## Project Structure
 
 ### main.py
-<insert description>
+Executes streamlit app that takes in user uploaded data, classifies images, and generates recommendations
 
 ### models
 - model.pt - ResNet 50 trained on 8 fashion aesthetics 
