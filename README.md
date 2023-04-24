@@ -3,7 +3,7 @@
 
 ### Description 
 #### Objective:
-Given a set of input images, classify the images into predetermined aesthetics and recommend products that fit that aesthetic.
+Our idea for this project is to create an image-based recommendation system that will make it easier for users to find the products they are looking for. Given a set of input images, our project will classify the images into predetermined aesthetics and recommend products that most closely resemble the input images.
 
 #### Project Architecture:
 Input - Images depicting the desired aesthetic.   
@@ -29,7 +29,7 @@ https://drive.google.com/drive/folders/1dXOS4b3BTFcPT4nB09OAGNIkh_zZKOTN?usp=sha
 ## Project Structure
 
 ### main.py
-<insert description>
+Main function that executes streamlit app. The app allows the user to upload a set of images, classifies the images using our pretrained model, and generates recommendations for those images from a Forever21 product catalog.  
 
 ### models
 - model.pt - ResNet 50 trained on 8 fashion aesthetics 
@@ -38,17 +38,22 @@ https://drive.google.com/drive/folders/1dXOS4b3BTFcPT4nB09OAGNIkh_zZKOTN?usp=sha
 - product_catalog.csv - Catalog of 249 women's fashion products on Forever21.com as of 4/24/2023
 
 ### scripts
-- classifier.py - contains ClassifyData class that takes in test data and generates predictions on trained model
+- classifier.py - contains class that takes in test data and generates predictions on trained model
 - dataloader.py - contains classes to create dataloaders for training, validation and test sets
 - model.py - initializes and trains ResNet 50 model
 - recommender.py - contains class for content filtering recommendation system 
+
+### notebooks
+Our project also includes exploratory notebooks that are not used in the streamlit app, but were essential to building the final project structure.
+ - recommender.ipynb - tests recommendation system on premade Forever21 DataFrame
+ - train_model.ipynb - trains ResNet 50 model on training and validation sets using GPU
+ - web_crawler.ipynb - contains a web scraper for Forever21, collects and organizes images for product catalog
 
 ## Link to App Demo
 ```
 https://diarrabell-fashion-recs-main-dzbzir.streamlit.app/
 ```
-## Instructions to run Streamlit app. 
-### Upload images to Streamlit to generate recommendations to Forever21 products 
+## Instructions to run Streamlit app from Github repo: 
 1. Install the requirements needed to use Streamlit
 ```
 pip install -r requirements.txt
