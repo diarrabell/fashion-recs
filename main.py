@@ -16,36 +16,41 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 #load trained model
 def load_model():
-    model = torch.load("models/model.pt", map_location=torch.device(device))
-    model.eval()
-    st.success("loading model...")
+    with st.spinner("loading model..."):
+        model = torch.load("models/model.pt", map_location=torch.device(device))
+        model.eval()
     return model
 
 def load_image(image):
     return Image.open(image)
 
+
 def test_images():
     #creating dataloaders
-    data_dir = 'uploads'
-    batch_size = 10
-    test = dl.TestDataloader(data_dir, batch_size)
-    test_set = test.test_dataloader
-    class_names = test.class_names
-    st.success("creating dataloaders...")
-
+    with st.spinner("creating dataloaders..."):
+        time.sleep(5)
+        data_dir = 'uploads'
+        batch_size = 10
+        test = dl.TestDataloader(data_dir, batch_size)
+        test_set = test.test_dataloader
+        class_names = test.class_names
+    
     #classify images in test set and find the most common predicted aesthetics
-    model = load_model()
-    test_set = cl.ClassifyData(model, test_set, device, class_names)
-    test_set.test_model()
-    predictions = test_set.find_top_predictions()
-    st.success("classifying images...")
+    with st.spinner("classifying images..."):
+        time.sleep(5)
+        model = load_model()
+        test_set = cl.ClassifyData(model, test_set, device, class_names)
+        test_set.test_model()
+        predictions = test_set.find_top_predictions()
 
     #recommend 10 similar products from the top predicted classes
-    rec = rc.Recommender(predictions, class_names)
-    rec = rec.get_recs()
-    st.success("generating recommendations...")
-
+    with st.spinner("generating recommendations..."):
+        time.sleep(5)
+        rec = rc.Recommender(predictions, class_names)
+        rec = rec.get_recs()
+    
     #display results
+    st.success("your recommendations have been generated! see below:")
     for r in rec:
         st.write(r)
     # st.dataframe(rec)
@@ -54,13 +59,13 @@ def test_images():
 def main():
     st.title("Fashion Recommendations")
     st.subheader("by Diarra Bell and Sakura Anning Yoshihara")
-    st.markdown("This application takes in a group of user-submitted images of clothing and classfies each image as one of the following aesthetics: 70s, 80s, 90s, boho, cottagecore, goth, kawaii, or y2k. Using the most frequent aesthetic labels for that group of images, it recommends similar products from Forever21.com.")
+    st.write("This application takes in a group of user-submitted images of clothing and classfies each image as one of the following aesthetics: 70s, 80s, 90s, boho, cottagecore, goth, kawaii, or y2k. Using the most frequent aesthetic labels for that group of images, it recommends similar products from Forever21.com.")
 
     #create director to store images
     if not os.path.exists("uploads/images"):
         os.makedirs("uploads/images")
 
-    label = "upload 10-15 images"
+    label = "upload at least 10 images"
     uploaded_files = st.file_uploader(label, accept_multiple_files=True, type=None)
 
     for uploaded_file in uploaded_files:
