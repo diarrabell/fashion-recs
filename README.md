@@ -6,9 +6,9 @@
 Given a set of input images, classify the images into predetermined aesthetics and recommend products that fit that aesthetic.
 
 #### Project Architecture:
-Input - Images depicting the desired aesthetic.
-Image classification - images are classified into one of eight aesthetics, and the overall aesthetic for the set of images is calculated.
-Recommendation system - Takes overall aesthetic for the images as input, and calculates the items labeled with the most similar aesthetics.
+Input - Images depicting the desired aesthetic.   
+Image classification - images are classified into one of eight aesthetics, and the overall aesthetic for the set of images is calculated.   
+Recommendation system - Takes overall aesthetic for the images as input, and calculates the items labeled with the most similar aesthetics.  
 Output - Links to recommendation to 10 products from a subset of Forever21's current catalog.
   
 We trained our model on the following eight categories or "aesthetics":
