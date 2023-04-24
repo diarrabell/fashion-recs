@@ -38,10 +38,10 @@ https://drive.google.com/drive/folders/1dXOS4b3BTFcPT4nB09OAGNIkh_zZKOTN?usp=sha
 - product_catalog.csv - Catalog of 249 women's fashion products on Forever21.com as of 4/24/2023
 
 ### scripts
-- classifier.py - 
-- dataloader.py - 
-- model.py - 
-- recommender.py - 
+- classifier.py - contains ClassifyData class that takes in test data and generates predictions on trained model
+- dataloader.py - contains classes to create dataloaders for training, validation and test sets
+- model.py - initializes and trains ResNet 50 model
+- recommender.py - contains class for content filtering recommendation system 
 
 ## Link to App Demo
 ```
