@@ -42,9 +42,7 @@ def test_images():
         test_set = cl.ClassifyData(model, test_set, device, class_names)
         test_set.test_model()
         predictions = test_set.find_top_predictions()
-
-        for pred in predictions:
-            st.write(pred)
+        st.write("Predicted classes:", predictions)
 
     #recommend 10 similar products from the top predicted classes
     with st.spinner("generating recommendations..."):

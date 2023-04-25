@@ -23,14 +23,17 @@ class Recommender():
         #convert list to string
         self.predictions = ' '.join(self.predictions)
         #insert string into dataframe
-        self.test_df = pd.DataFrame(list(zip(["test"], [""], self.predictions)),
+        self.test_df = pd.DataFrame(list(zip(["test"], [""], [self.predictions])),
             columns =['img_name', 'links', "aesthetics"])
+        print(self.predictions)
+        print(self.test_df)
         
     def get_recs(self):
-        ret = None
+        # get vector representations of genre
         vec = CountVectorizer()
         genres_vec = vec.fit_transform(self.catalog_df['aesthetics'])
 
+        # genres_vectorized = pd.DataFrame(genres_vec.todense(),columns=vec.get_feature_names_out(),index=self.catalog_df.img_name)
 
         #calculate cosine similarity of items
         #build similarity matrix of movies based on similarity of genres
